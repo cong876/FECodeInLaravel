@@ -1,0 +1,50 @@
+<div ui-view>
+  <ul>
+    <li class="order" ng-repeat="order in orders.list track by $index" id="{{'order'+$index}}">
+      <div class="orderHead">
+        <div>
+          <section>
+            <span class="icon-order"></span><span ng-bind="order.country"></span><span class="orderState right" ng-bind="orders.state_name"></span>
+          </section>
+        </div>
+        <hr/>
+      </div>
+      <div class="orderContent">
+        <div ng-click="checkOrder(order.id)">
+          <over-view
+            title="{{substr(order.title,58)}}" number="{{order.number}}"
+            image="{{order.pic_url || hlj_url.defaultItemPic}}"
+            price="{{order.price}}">
+          </over-view>
+        </div>
+        <div ng-if="order.refunds.length" class="orderRefundArea" ng-click="checkRefund(order.refunds)">
+          <hr/>
+          <span class="icon-refund"> 查看退款</span>
+          <span class="right">></span>
+        </div>
+        <hr/>
+      </div>
+      <div class="orderFooter">
+        <div class="btnArea">
+          <div ng-if="(orders.state == 201) || (orders.state == 0)" ng-click="deleteOrder(order.id)" class="yeye_btn rect_btn">取消订单</div>
+          <div ng-if="orders.state == 301" ng-click="hideOrder(order.id)" class="yeye_btn rect_btn">删除订单</div>
+          <div class="yeye_btn rect_btn callOp" ng-click="callOperator(order.operatorMobile)">联系客服</div>
+          <div ng-if="(orders.state == 301) || (orders.state == 601)" ui-sref="buyerAdmin.orders.list.detail.logistics({orderId: order.id})" class="yeye_btn rect_btn">查看物流</div>
+          <div ng-if="orders.state == 201" ng-click="payNow(order.id)" class="yeye_btn rect_btn">立即付款</div>
+          <div ng-if="orders.state == 601" ng-click="sureToComplete(order.id)" class="yeye_btn rect_btn">确认收货</div>
+        </div>
+      </div>
+    </li>
+    <div ng-show="orders.state == 301 && orders.meta.pagination.current_page<orders.meta.pagination.total_pages"
+         ng-click="loadMoreOrder(orders.meta)" class="center">
+      <p ng-show="!loadingMore" class="loadMoreOrder">--轻触加载更多--</p>
+      <loading ng-show="loadingMore"></loading>
+    </div>
+  </ul>
+  <div ng-if="orders.list.length === 0 && !showLoading">
+    <div class="noOrderArea center">
+      <img ng-src="{{hlj_url.noOrderBg}}" alt=""/>
+    </div>
+    <activity-preview url="hlj_url.getActivityItems"></activity-preview>
+  </div>
+</div>

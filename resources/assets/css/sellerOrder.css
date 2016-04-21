@@ -1,0 +1,1263 @@
+	body{
+		background: rgb(238,238,238);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+/*		user-select:none;
+		-webkit-user-select: none;	*/
+		word-break:break-all;
+	}	
+	body,p,span,div,li,ul,hr{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	table{
+		border: none;
+		border-spacing: 0;
+		margin: 0;
+		padding: 0;		
+	}
+	input{
+		background-color: transparent;
+		border: 1px solid rgba(255,255,255,0); 
+		box-shadow: none;
+		color: rgb(238,88,92);
+		outline: none;
+		font-size: 1em;
+		margin: 0;
+	}
+	input::-webkit-input-placeholder{ 
+    	color: rgb(252,183,199);
+	}
+	select{
+		border: 1px solid rgb(252,193,192);
+		outline: none;
+		font-size: 1em;
+		width: 12em;
+		color: rgb(236,97,100);
+	}
+	.placeholder{
+		opacity: 0;
+	}
+	.cannotSelect{
+		color: gray;
+	}
+	/*@media all and (max-width: 320px){*/
+		.minword{
+			font-size: x-small;
+		}
+	/*}*/
+
+/*loading页样式*/
+	#loading{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: rgba(255,255,255,1);
+		top: 0;
+		text-align: center;
+		z-index: 1000;
+	}
+	#loading .spinner{
+		margin-top: 15em;
+	}
+	.spinner {
+	  	margin: 100px auto 0;
+	  	width: 150px;
+	  	text-align: center;
+	}
+	 
+	.spinner > div {
+	  	width: 30px;
+	  	height: 30px;
+	  	background-color: rgb(194,63,92);
+	 	border-radius: 100%;
+	  	display: inline-block;
+	  	-webkit-animation: bouncedelay 1s infinite ease-in-out;
+	  	animation: bouncedelay 1s infinite ease-in-out;
+	  	-webkit-animation-fill-mode: both;
+	  	animation-fill-mode: both;
+	}
+	 
+	.spinner .bounce1 {
+	  	-webkit-animation-delay: -0.32s;
+	  	animation-delay: -0.32s;
+	}
+	 
+	.spinner .bounce2 {
+	  	-webkit-animation-delay: -0.16s;
+	  	animation-delay: -0.16s;
+	}
+	 
+	@-webkit-keyframes bouncedelay {
+	  	0%, 80%, 100% { -webkit-transform: scale(0.0) }
+	  	40% { -webkit-transform: scale(1.0) }
+	}
+	 
+	@keyframes bouncedelay {
+	  	0%, 80%, 100% { 
+	    	transform: scale(0.0);
+	    	-webkit-transform: scale(0.0);
+	  	} 40% { 
+	    	transform: scale(1.0);
+	    	-webkit-transform: scale(1.0);
+	  	}
+	}
+	
+/*home页样式*/
+	#home{
+		z-index: 1;		
+	}
+	#homeHeader{
+		width: 100%;
+		height: 8.8em;
+		background: -webkit-linear-gradient(top right, rgba(169,64,90,1),rgba(200,69,98,1),rgba(233,79,100,1));
+		color: rgb(255,255,255);
+	}
+	#homeHeader .userInfo{
+		margin: 0 1em;
+		padding-top: 1.5em;
+		padding-bottom: 1em;
+		text-align: left;
+		border-bottom: 1px solid rgb(255,255,255);
+	}
+	#wx_image{
+		background-color: gray;
+		border-radius: 0.5rem;
+		width: 3.2em;
+		height: 3.2em;
+		overflow: hidden;
+	}
+	#wx_nickname{
+		display: inline-block;
+		position: relative;
+		margin-left: 0.8em;
+		top: -1em;
+		font-size: 1.2em;
+		font-weight: 600;
+	}
+	#homeHeader .account{
+		padding: 0.9em 0;
+		margin: 0 1.1em;
+		font-size: 0.9em;
+	}
+	#homeHeader .account span:nth-child(2){
+		display: inline-block;
+		float: right;
+		font-weight: 600;
+	}
+	
+	#homeTabs{
+		width: 100%;
+		background: rgb(255,255,255);	
+	}
+	#homeTabsFixed{
+		width: 100%;
+		position: fixed;
+		z-index: 999;
+		display: none;
+		top: 0;
+		opacity: 0;
+		background: rgb(194,63,92);		
+	}
+	.tabContainer{
+		padding: 0.5em 0 0 0;
+	}
+	.homeTab{
+		float: left;
+		width: 20%;
+		text-align: center;
+		color: rgb(249,186,197);
+		font-size: 1rem;
+	}
+	.homeTab .icon{
+		font-size: 1.5em;
+		font-weight: bolder; 
+	}
+	.icon-iconfont-waitSend{
+		position: relative;
+	}
+	.icon-iconfont-waitSend .catchAttention{
+		position: absolute;
+		opacity: 0;
+		color: red;
+		font-size: 0.4em;
+		top: -0.4em;
+		left: 1.8em;
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		border: 2px solid red;
+		border-radius: 50%;
+		text-align: center;
+	}
+	.active{
+		color: rgb(253,105,114);
+	}
+	.active .tabStatus{
+		display: inline-block;
+		height: 1.5em;
+		border-bottom: 2px solid rgb(253,105,114);		
+	}
+	.tabFooter{
+		width: 93%;
+		margin-left: 3.5%;
+		border: none;
+		border-top: 1px solid rgb(251,183,201);
+		margin-top: 2.5em;
+	}
+	#homeContent .noOrderContent{
+		width: 100%;
+		text-align: center;
+		background-color: rgb(238,238,238);
+		padding: 8em 0;
+		opacity: 0;
+	}
+	#homeContent .noOrderContent .orderIcon{
+		width: 14%;
+	}
+	#homeContent .noOrderContent .orderWord{
+		color: rgb(249,186,197);
+		font-size: 1.2rem;
+	}
+
+/*userInfo页样式*/
+	#userInfo{
+		z-index: 2;
+		display: none;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: -webkit-linear-gradient(top right, rgba(157,58,86,1), rgba(189,64,94,1),rgba(218,73,102,1),rgba(235,85,105,1),rgba(247,108,112,1),rgba(251,143,133,1),rgba(253,197,182,1),rgba(253,214,202,1));			
+	}
+	#userInfo .userInfoContainer{
+		text-align: center;
+		background-color: rgb(255,255,255);
+		margin-top: 1em;
+	}
+	#userInfo .userInfoContainer li{
+		width: 93%;
+		margin: 0 auto;
+		color: rgb(238,88,92);
+		border-bottom: 1px solid rgb(255,189,186);
+	}
+	#userInfo .userInfoContainer li:nth-last-child(1){
+		border: none;
+	}
+	#userInfo .userInfoContainer>li{
+		height: 2.8em;
+	}
+	#userInfo .userInfoContainer .user_imageContainer{
+		height: 4.64em;
+	}
+	#userInfo .user_image{
+		width: 3.39em;
+		height: 3.39em;
+		border-radius: 0.3em;
+		overflow: hidden;
+	}
+	#userInfo .userInfoContainer li table{
+		width: 100%;
+		height: 100%;
+	}
+	#userInfo .userInfoContainer li table tbody tr td:nth-child(1){
+		text-align: left;
+		color: rgb(255,189,186);
+	}
+	#userInfo .userInfoContainer li table tbody tr td:nth-child(2){
+		text-align: right;
+	}
+	#userInfo .userInfoContainer li span{
+		vertical-align: middle;
+	}
+	#userInfo .nextMark{
+		padding-right: 0.3em;
+		font-size: 0.8em;
+		font-weight: bolder;
+	}
+
+/*editUserInfo页面样式*/
+	#editUserInfo{
+		z-index: 3;
+		display: none;
+		width: 100%;
+	}
+	#editUserInfo .editUserInfoContainer{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: -webkit-linear-gradient(top right, rgba(157,58,86,1), rgba(189,64,94,1),rgba(218,73,102,1),rgba(235,85,105,1),rgba(247,108,112,1),rgba(251,143,133,1),rgba(253,197,182,1),rgba(253,214,202,1));
+		top: 0;
+		display: none;
+	}
+	#editUserInfo .editUserInfoContainer table{
+		width: 100%;
+		border: none;
+		border-spacing: 0;
+		margin-top: 3em;
+		background-color: rgba(255,255,255,0.9);
+	}
+	#editUserInfo .editUserInfoContainer .clear{
+		margin: 0 20%;
+	}
+	#editUserInfo .editUserInfoContainer table tbody{
+		width: 100%;
+	} 
+	#editUserInfo .editUserInfoContainer table tbody tr{
+		width: 100%;
+		height: 2.6em;
+		color: rgb(238,88,92);
+		background-color: rgba(255,255,255,0.9);
+	}
+	#user_mobile table tbody tr td:nth-child(1){
+		width: 26%;
+		text-align: center;
+	}
+	#user_mobile table tbody tr td:nth-child(2){
+		width: 50%;
+		text-align: left;
+	}
+	#user_mobile input{
+		width: 100%;
+	}
+	#user_mobile table tbody tr td:nth-child(3){
+		width: 24%;
+		text-align: center;
+		line-height: 1ex;
+	}
+	#user_email table tbody tr td:nth-child(1){
+		width: 21%;
+		text-align: center;
+	}
+	#user_email table tbody tr td:nth-child(2){
+		width: 60%;
+		text-align: left;
+	}
+	#user_email input{
+		width: 100%;
+	}
+	#user_email table tbody tr td:nth-child(3){
+		width: 19%;
+		text-align: center;
+		line-height: 1ex;
+	}
+	#getCaptchas{
+		display: inline-block;
+		background-color: rgba(238,88,92,0.8);
+		color: rgb(255,255,255);
+		font-size: 0.8em;
+		padding: 0.5em 0.3em;
+		width: 5.5em;
+	}
+	#countDown{
+		display: none;
+		background-color: rgba(238,88,92,0.8);
+		color: rgb(255,255,255);
+		font-size: 0.8em;
+		padding: 0.5em 0.3em;
+		width: 5.5em;
+	}	
+	#editUserInfo .instruction{
+		margin-top: 1.5em; 
+		text-align: center;
+		color: rgb(255,255,255);
+		font-size: 0.8em;
+	}
+	#editUserInfo .saveEdit{
+		width: 93%;
+		height: 2em;
+		margin: 2em auto;
+		background-color: rgb(255,255,255);
+		color: rgb(238,88,92);
+		text-align: center;
+		display: table;
+	}
+	#editUserInfo .saveEdit p{
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+/*提现方式管理页样式*/
+	#user_account{
+		display: none;
+		z-index: 3;
+		width: 100%;
+		height: 100%;
+		color: rgb(238,88,92);
+	}
+	#user_account .instruction{
+		text-align: center;
+		height: 5em;
+	}
+	#user_account .instruction p{
+		padding-top: 2.6em;
+	}
+	#user_account .editPayMethod{
+		font-size: 1rem;
+		width: 100%;
+		height: 2.5em;
+	}
+	#user_account .addNewPayMethod{
+		height: 2em;
+		width: 73%;
+		background-color: rgb(194,63,92);
+		color: rgb(255,255,255);
+		margin: 1em auto;
+		text-align: center;
+		display: table;
+	}
+	#user_account .addNewPayMethod p{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	#user_account .payMethod{
+		margin-top: 1em;
+	}
+	#user_account ul{
+		width: 100%;
+	}
+	#user_account li{
+		width: 100%;
+		margin-bottom: 0.5em;
+		background-color: rgba(194,63,92,0.9);
+		color: rgb(255,255,255);
+		height: 6em;
+		padding: 0em;
+	}
+	#user_account li:last-child{
+		margin-bottom: 2.5em;
+	}
+	#user_account li table{
+		width: 100%;
+		padding: 0.5em 0.8em;
+	}
+	#user_account li table tr:nth-child(1){
+		height: 2em;
+	}
+	#user_account li table tr:nth-child(2){
+		height: 3em;
+	}
+	#user_account li table tr:nth-child(1) td:nth-child(1){
+		font-size: 1.2em;
+		font-weight: 500;
+	}
+	#user_account .icon-bin{
+		font-size: 1rem;
+		padding-left: 0.5em;
+	}
+	#user_account .delete{
+		font-size: 1rem;
+		opacity: 0;
+		display: none;
+	}
+	#user_account li table tr:nth-child(1) td:nth-child(2){
+		text-decoration: underline;
+	}	
+	#user_account li table td:nth-child(1){
+		width: 70%;
+	}
+	#user_account li table td:nth-child(2){
+		text-align: right;
+		width: 30%;
+	}
+	#user_account .buyer_name{
+		display: inline-block;
+		margin-right: 1em;
+		margin-bottom: 0.2em;
+	}
+	#user_account .setDefault{
+		text-decoration: underline;
+	}
+
+/*增加/修改支付宝/银行卡*/
+	#addAlipay,#addBankCard{
+		display: none;
+		z-index: 4;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: -webkit-linear-gradient(top right, rgba(157,58,86,1), rgba(189,64,94,1),rgba(218,73,102,1),rgba(235,85,105,1),rgba(247,108,112,1),rgba(251,143,133,1),rgba(253,197,182,1),rgba(253,214,202,1));
+	}
+	#addAlipay .addDetail,#addBankCard .addDetail{
+		margin-top: 1em;
+		background-color: rgb(255,255,255);
+		color: rgb(238,88,92);
+		height: 17em;
+		padding: 0.5em 0.8em;
+	}
+	#addAlipay .addDetail p,#addBankCard .addDetail p{
+		margin-bottom: 0.5em;
+		padding-bottom: 0.5em;
+	}
+	#addAlipay input,#addBankCard input{
+		width: 85%;
+	}
+	#addAlipay .instruction,#addBankCard .instruction{
+		color: rgb(255,255,255);
+		text-align: center;
+		margin-top: 1em;
+	}
+	#addAlipay .saveOuter,#addBankCard .saveOuter{
+		padding-top: 0em;
+		font-size: 1rem;
+		width: 100%;
+		height: 2.5em;
+	}
+	#addAlipay .save,#addBankCard .save{
+		height: 2em;
+		width: 73%;
+		color: rgb(194,63,92);
+		background-color: rgb(255,255,255);
+		margin: 1em auto;
+		text-align: center;
+		display: table;
+	}
+	#addAlipay .save p,#addBankCard .save p{
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+/*收入/提现页*/
+	#withdrawals{
+		z-index: 2;
+		display: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		background: -webkit-linear-gradient(top right, rgba(157,58,86,1), rgba(189,64,94,1),rgba(218,73,102,1),rgba(235,85,105,1),rgba(247,108,112,1),rgba(251,143,133,1),rgba(253,197,182,1),rgba(253,214,202,1));
+		color: rgb(253,105,114);
+		font-size: 1.2em;
+	}
+	#withdrawals div{
+		background-color: rgb(255,255,255);
+	}
+	#withdrawals>div:nth-child(1){
+		margin-top: 1em;
+		text-align: center;
+		height: 9.5em;
+	}
+	#withdrawals>div:nth-child(1) img{
+		width: 3.8em;
+		height: 3.8em;
+		border-radius: 0.5em;
+		overflow: hidden;
+		margin-top: 0.9em;
+	}
+	#withdrawals>div:nth-child(1)>p{
+		font-size: 0.85em;
+		margin-top: 0.6em;
+	}
+	#withdrawals .totalRevenue{
+		font-size: 1.3em !important;
+		font-weight: 600;
+		margin-top: 0.5em !important;
+	}
+	#withdrawals>div:nth-child(2){
+		height: 7.3em;
+		text-align: center;
+	}
+	#withdrawals>div:nth-child(2) ul{
+		width: 90%;
+		height: 7.2em;
+		margin: 0 auto;
+		border-top: 1px solid rgb(249,186,197);
+		border-bottom: 1px solid rgb(249,186,197);
+	}
+	#withdrawals>div:nth-child(2) ul>li{
+		float: left;
+		width: 49.8%;
+		height: 6em;
+		margin-top: 0.6em;
+	}
+	#withdrawals>div:nth-child(2) ul>li:nth-child(2){
+		border-left: 1px solid rgb(249,186,197);
+		background-color: rgb(253,247,246)
+	}
+
+	#withdrawals>div:nth-child(2) ul>li>p{
+		font-size: 0.85em;
+		margin-top: 1em;
+	}
+	#withdrawals .waitRevenue,#withdrawals .revenue{
+		font-size: 1.3em !important;
+		font-weight: 600;
+		margin-top: 0.5em !important;
+	}
+	#withdrawals>div:nth-child(2) ul>li>p:last-child{
+		font-size: 0.8em;
+		margin-top: 0.5em !important;
+	}
+	#withdrawals>div:nth-child(3){
+		font-size: 0.85em;
+		height: 3em;
+	}	
+	#withdrawals .account{
+		width: 90%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	#withdrawals .account td:nth-child(2){
+		text-align: right;
+		font-weight: 600;
+	}
+
+/*累计收入页(包含提现)*/
+	#revenue,#waitRevenue{
+		display: none;
+		z-index: 3;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+	#revenue .tabContainer,#waitRevenue .tabContainer{
+		font-size: 1.2em;
+		width: 100%;
+		height: 2em;
+		color: rgb(249,186,197);
+		background-color: rgb(255,255,255);
+		border-bottom: 1px solid rgb(253,105,114);
+	}
+	#revenue .tabContainer li,#waitRevenue .tabContainer li{
+		float: left;
+		width: 50%;
+		height: 2em;
+		text-align: center;
+	}
+	#revenue .tabContainer span,#waitRevenue .tabContainer span{
+		display: inline-block;
+		padding: 0.4em;
+		border-bottom: 3px solid rgba(253,105,114,0);
+	}
+	#revenue .active span,#waitRevenue .active span{
+		border-bottom: 2px solid rgba(253,105,114,1);
+		color: rgb(253,105,114);
+		font-weight: 700;
+	}
+	#revenue .going,#revenue .completed,#waitRevenue .orderContainer{
+		width: 100%;
+	}
+	#revenue .going li,#revenue .completed li{
+		width: 100%;
+		background-color: rgb(255,255,255);
+		color: rgb(253,105,114);
+		height: 5.5em;
+		margin-bottom: 0.5em;
+	}
+	#revenue .going table{
+		width: 100%;
+		height: 100%;
+		padding: 0 0.8em;
+	}
+	#revenue .going td:nth-child(1) p:first-child{
+		margin-bottom: 0.5em;
+	}
+	#revenue .going td:nth-child(2){
+		text-align: right;
+	}
+	#revenue .going td:nth-child(2) span{
+		display: inline-block;
+		border: 1px solid rgb(253,105,114);
+		padding: 0.3em 1.2em;
+	}
+	#revenue .completed table{
+		width: 100%;
+		padding: 0.5em 0.8em;
+	}
+	#revenue .completed table tr:first-child{
+		height: 2em;
+	}
+	#revenue .completed table tr td:nth-child(2){
+		text-align: right;
+	}
+	#revenue .amount{
+		font-size: 1.3em;
+		font-weight: 600;
+	}
+	#revenue .completed .payMethod{
+		font-weight: 600;
+	}	
+	#revenue .completed .toWithdrawals{
+		text-decoration: underline;
+	}
+
+
+/*home页下订单列表样式*/
+	#orderContent{
+		display: none;
+		opacity: 0;
+		background-color: rgb(238,238,238);
+		font-size: 1rem;		
+	}
+	.orderContainer{
+		background-color: rgb(238,238,238);
+		font-size: 1rem;
+	}
+	.order{
+		height: 11.2em;
+		width: 100%;
+		margin-bottom: 1em;
+		color: rgb(253,105,114);
+	}
+	.order table{
+		width: 100%;
+	}
+	.orderHeader{
+		height: 2.6em;
+		width: 100%;
+		background-color: rgb(255,255,255);
+	}
+	.orderHeader td{
+		padding: 0 1em;
+	}
+	.orderHeader td span:last-child{
+		display: inline-block;
+		float: right;
+	}
+	.orderBody{
+		width: 100%;
+		height: 6em;
+		background-color: rgb(245,245,245);
+	}
+	.orderBody .imgContainer{
+		width: 30%;
+		text-align: center;
+	}
+	.orderBody .imgContainer img{
+		width: 5em;
+		height: 5em;
+	}
+	.orderBody .orderTitleContainer{
+		width: 70%;
+		text-align: left;
+	}
+	.orderBody .orderTitleOuter{
+		padding: 0.4em 1em 0.5em 0;
+	}
+	.orderBody .orderPriceOuter{
+		display: inline-block;
+		float: right;
+	}
+	.orderBody .orderTitleOuter p:nth-child(1),.orderBody .requirementTitleContainer p:nth-child(1){
+		height: 4em;
+	}
+	.orderBody .orderTitleOuter p:nth-child(2),.orderBody .requirementTitleContainer p:nth-child(2){
+		height: 1.1em;
+	}
+	.orderFooter{
+		width: 100%;
+		height: 2.6em;
+		background-color: rgb(255,255,255);
+	}
+	.orderFooter span{
+		display: inline-block;
+		width: 4.8em;
+		padding: 0.3em 0;
+		margin-right: 0.7em;
+		text-align: center;
+		color: rgb(249,186,197);		
+		border: 1px solid rgb(249,186,197);
+		float: right;
+	}
+	.orderFooter span:nth-child(1){
+		margin-right: 1em;
+	}
+	.orderFooter span:nth-child(1){
+		color: rgb(253,105,114);
+		border-color: rgb(253,105,114);
+	}
+	.orderFooter span a,.orderFooter span a:hover,.orderFooter span a:active,.orderFooter span a:visited{
+		color: rgb(249,186,197);
+		text-decoration: none;
+	}	
+
+/*itemList页样式		*/
+	#itemList{
+		postion: absolute;
+		top: 0;
+		z-index: 4;
+		width: 100%;
+		display: none;
+		opacity: 0;
+		background-color: rgb(238,238,238);
+		color: rgb(253,105,114); 
+	}
+	#itemList .forWaitPay{
+		display: none;
+	}
+	#itemStatusOuter{
+		width: 100%;
+		height: 3em;
+		margin-top: 0.8em;
+		background-color: rgb(255,255,255); 
+	}
+	#itemStatusOuter table{
+		width: 100%;
+		height: 100%;
+	}
+	#itemStatusOuter tr{
+		width: 100%;
+		height: 100%;
+	}
+	#itemStatusOuter td{
+		text-align: right;
+		padding: 0 1em;
+	}
+	#itemListContent,#sureToPayContent{
+		width: 100%;
+	}
+	#itemListContent .itemContainer,#sureToPayContent .itemContainer{
+		width: 100%;
+		height: 6.6em;
+		background-color: rgb(245,245,245);
+		margin-bottom: 0.8em;	
+	}
+	#itemListContent .itemContainer table,#sureToPayContent .itemContainer table,tbody{
+		width: 100%;
+	}
+	#itemListContent .itemContainer tr,#sureToPayContent .itemContainer{
+		height: 6.6em;
+		width: 100%;
+	}
+	#itemListContent .itemImageOuter,#sureToPayContent .itemImageOuter{
+		width: 30%;
+		text-align: center;
+	}
+	#itemListContent .itemImage,#sureToPayContent .itemImage{
+		width: 5em;
+		height: 5em;
+	}
+	#itemListContent .itemTitleOuter,#sureToPayContent .itemTitleOuter{
+		width: 70%;
+		padding-right: 1em;
+	}
+	#itemListContent .itemTitle,#sureToPayContent .itemTitle{
+		height: 3.9em;
+		padding-top: 0.8em		
+	}
+	#itemListContent .itemNumberOuter,#sureToPayContent .itemNumberOuter{
+		height: 1.1em;
+		padding-bottom: 0.8em;
+		text-align: right;	
+	}
+	#itemListContent li:nth-last-child(1),#sureToPayContent li:nth-last-child(1){
+		margin-bottom: 0;
+	}
+	#orderOverview,#payOrderOverview{
+		width: 100%;
+		height: 3em;
+		margin-bottom: 0.8em;
+		background-color: rgb(255,255,255);
+	}
+	#orderOverview table,#payOrderOverview table{
+		width: 100%;
+		height: 100%;
+	}
+	#orderOverview .itemTotalNumberOuter,#payOrderOverview .itemTotalNumberOuter{
+		width: 30%;
+		text-align: left;
+		padding-left: 1em;
+	}
+	#orderOverview .orderPriceOuter,#payOrderOverview .orderPriceOuter{
+		width: 70%;
+		text-align: right;
+		padding-right: 1em;
+	}
+	#logistics{
+		width: 100%;
+		margin-bottom: 0.8em;
+		color: rgb(255,160,160);
+	}
+	#logistics div{
+		background-color: rgb(255,255,255);
+		padding: 1em;
+		margin-bottom: 0.8em;
+	}
+	#itemListfooter{
+		width: 100%;
+		background-color: rgb(255,255,255);
+		color: rgb(255,160,160);
+		margin-bottom: 5em;
+	}
+	#itemListfooter div{
+		padding: 1em;
+	}
+	#itemListfooter .exTime a,#itemListfooter .exSendTime a{
+		color: rgb(253,105,114);
+		text-decoration: underline; 
+	}
+	#itemListPlaceholder{
+		width: 100%;
+		height: 3em;
+		background: rgba(255,255,255,0);
+	}
+	#orderButtonFixed{
+		position: fixed !important;
+		bottom: 0 !important;
+		width: 100%;
+	}
+	#orderButtonFixed li{
+		height: 2.6em;
+		margin-bottom: 0.5em;
+	}
+	#orderButtonFixed .orderHeader,#orderButtonFixed .orderBody{
+		display: none;
+	}
+
+/*itemDetail页详情*/
+	#itemDetail{
+		position: absolute;
+		z-index: 5;
+		width: 100%;
+		display: none;
+		opacity: 0;
+		color: rgb(253,105,114);
+	}
+	#itemDetail p{
+		padding-right: 0.5em;
+	}
+	#itemImageContainer{
+		padding: 0.8em;
+		background-color: rgb(255,255,255);
+	}
+	#itemImageContainer div{
+		width: 33.3%;
+		float: left;
+		padding-bottom: 0.6em;
+	}
+	#itemImageContainer div:nth-child(3n+1){
+		text-align: left;
+	}
+	#itemImageContainer div:nth-child(3n+2){
+		text-align: center;
+	}
+	#itemImageContainer div:nth-child(3n){
+		text-align: right;
+	}	
+	#itemImageContainer img{
+		width: 6.7em;
+		height: 6.7em;
+	}
+	@media all and (max-width: 320px){
+		#itemImageContainer img{
+			width: 5.7em;
+			height: 5.7em;
+		}	
+	}
+	#itemTitleContainer{
+		padding: 0 0 0.8em 0.8em;
+		background-color: rgb(255,255,255);
+	}
+	#itemTitleContainer p{
+		clear: both;
+	}
+	#itemDetail .itemPlaceholder{
+		background-color: rgb(238,238,238);
+		width: 100%;
+		height: 1.5em;
+	}
+	#itemDescriptionContainer{
+		padding: 0.8em 0 0.8em 0.8em;
+		background-color: rgb(255,255,255);
+	}
+	#itemDescriptionContainer .descriptionTitle{
+		font-weight: bold;
+		margin-bottom: 0.5em;
+	}
+	#itemDescriptionContainer .itemDescription{
+		margin-bottom: 1em;
+	}
+
+/*弹窗页样式*/
+    .toWithdrawals{
+    	transition: background 0.2s;
+    	-webkit-transition: background 0.2s;
+    }
+    .toWithdrawals:active{
+    	background: rgb(194,63,92); 
+    }
+/*确认提现页样式*/
+	#sureToWithdrawals{
+		position: fixed;
+		top: 0;
+		display: none;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+		color: rgb(253,105,114);
+	}
+	#sureToWithdrawals table{
+		background: rgb(255,255,255);
+		width: 85%;
+		height: 12.5em;
+		margin: 10em auto;
+		padding: 0.8em 0;
+	}
+	#sureToWithdrawals table p{
+		width: 90%;
+		margin: 0 auto;
+		text-align: left;
+	}
+	#sureToWithdrawals table p:nth-child(3){
+		text-align: center;
+	}
+	#sureToWithdrawals tr:nth-child(2) span{
+		display: inline-block;
+		width: 5em;
+		text-align: center;
+		padding: 0.5em 0;
+		border: 1px solid rgb(253,105,114);
+		margin: 0 0.8em;
+	}
+	#sureToWithdrawals tr:nth-child(2) .keepItOn{
+		color: rgb(249,186,197);
+		border: 1px solid rgb(249,186,197);
+	}	
+	#sureToWithdrawals tr:nth-child(2) span:active{
+		background: rgb(194,63,92);
+	}
+	#sureToWithdrawals tr:nth-child(1) p:nth-last-child(1){
+		margin-top: 0.5em;
+	}
+/*设为默认提现方式弹窗*/
+	#sureToSetDefault{
+		position: fixed;
+		top: 0;
+		display: none;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+		color: rgb(253,105,114);
+	}
+	#sureToSetDefault table{
+		background: rgb(255,255,255);
+		width: 85%;
+		height: 12.5em;
+		margin: 10em auto;
+		padding: 0.8em 0;
+	}
+	#sureToSetDefault table p{
+		width: 90%;
+		margin: 0 auto;
+		text-align: center;
+	}	
+	#sureToSetDefault tr:nth-child(2) span{
+		display: inline-block;
+		width: 5em;
+		text-align: center;
+		padding: 0.5em 0;
+		border: 1px solid rgb(253,105,114);
+		margin: 0 0.8em;
+	}
+	#sureToSetDefault tr:nth-child(2) .keepItOn{
+		color: rgb(249,186,197);
+		border: 1px solid rgb(249,186,197);
+	}	
+	#sureToSetDefault tr:nth-child(2) span:active{
+		background: rgb(194,63,92);
+	}
+	#sureToSetDefault tr:nth-child(1) p:nth-last-child(1){
+		margin-top: 0.5em;
+		text-align: left;
+	}
+/*取消订单页样式*/
+	#cancleOrder{
+		position: fixed;
+		top: 0;
+		display: none;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+		color: rgb(253,105,114);
+	}
+	#cancleOrder table{
+		background: rgb(255,255,255);
+		width: 85%;
+		height: 12.5em;
+		margin: 10em auto;
+		padding: 0.8em 0;
+	}
+	#cancleOrder table p{
+		width: 90%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	#cancleOrder .keepItOn{
+		display: inline-block;
+		width: 5em;
+		text-align: center;
+		padding: 0.5em 0;
+		border: 1px solid rgb(253,105,114);
+		margin: 0 0.8em;
+	}
+	#cancleOrder .sureToCancle{
+		display: inline-block;
+		width: 5em;
+		text-align: center;
+		padding: 0.5em 0;
+		margin: 0 0.8em;
+		color: rgb(249,186,197);
+		border: 1px solid rgb(249,186,197);
+	}
+	#cancleOrder tr:nth-child(2) span:active{
+		background: rgb(194,63,92);
+	}
+/*联系客服页样式*/
+	#callOp{
+		position: fixed;
+		top: 0;
+		display: none;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+		color: rgb(253,105,114);
+	}
+	#callOp table{
+		background: rgb(255,255,255);
+		width: 85%;
+		height: 12.5em;
+		margin: 10em auto;
+		padding: 0.8em 0;
+	}
+	#callOp table p{
+		width: 90%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	#callOp tr:nth-child(2) span{
+		display: inline-block;
+		width: 5em;
+		text-align: center;
+		padding: 0.5em 0;
+		border: 1px solid rgb(253,105,114);
+		margin: 0 0.8em;
+	}
+	#callOp tr:nth-child(2) .keepItOn{
+		color: rgb(249,186,197);
+		border: 1px solid rgb(249,186,197);
+	}	
+	#callOp tr:nth-child(2) span:active{
+		background: rgb(194,63,92);
+	}
+	#callOp tr:nth-child(1) p:nth-last-child(1){
+		margin-top: 0.5em;
+	}
+	#callOp tr:nth-child(2) span a{
+		text-decoration: none;
+		color: rgb(253,105,114);
+	}
+	#callOp tr:nth-child(2) span a:hover,#callOp tr:nth-child(2) span a:active,#callOp tr:nth-child(2) span a:link{
+		text-decoration: none;
+		color: rgb(253,105,114);
+		background: none;
+	}
+/*有效时间页样式*/
+	#exTime,#exSendTime{
+		position: fixed;
+		top: 0;
+		display: none;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+		color: rgb(253,105,114);
+	}
+	#exTime table,#exSendTime table{
+		background: rgb(255,255,255);
+		width: 85%;
+		height: 12.5em;
+		margin: 10em auto;
+		padding: 0.8em 0;
+	}
+	#exTime table p,#exSendTime table p{
+		width: 80%;
+		margin: 0 auto;
+		text-align: left;
+	}
+	#exTime tr:nth-child(2) p,#exSendTime tr:nth-child(2) p{
+		text-align: center;
+	}
+	#exTime tr:nth-child(2) span,#exSendTime tr:nth-child(2) span{
+		display: inline-block;
+		width: 5em;
+		text-align: center;
+		padding: 0.5em 0;
+		border: 1px solid rgb(253,105,114);
+		margin: 0 0.8em;
+	}
+	#exTime tr:nth-child(2) span:active,#exSendTime tr:nth-child(2) span:active{
+		background: rgb(194,63,92);
+	}
+/*填写物流单号页样式*/
+	#send{
+		position: fixed;
+		top: 0;
+		display: none;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+		color: rgb(253,105,114);
+	}
+	#send table{
+		background: rgb(255,255,255);
+		width: 85%;
+		height: 12.5em;
+		margin: 10em auto;
+		padding: 0.8em 0;
+	}
+	#send p{
+		width: 100%;
+		text-align: center;
+	}
+	#send input{
+		border: 1px solid rgb(252,193,192);
+	}
+	#send select{
+		margin-bottom: 5px;
+	}
+	#send table p{
+		width: 90%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	#send .logistics_other{
+		display: none;
+		margin-top: 0.5em;
+	}
+	#send .logistics,#send .logistics_other{
+		width: 90% !important;
+		padding: 0.2em;
+	} 
+	#send .logistics_number{
+		width: 90% !important;
+		padding: 0.2em;
+	}
+	#send tr:nth-child(2) span{
+		display: inline-block;
+		width: 5em;
+		text-align: center;
+		padding: 0.5em 0;
+		border: 1px solid rgb(253,105,114);
+		margin: 0 0.8em;
+	}
+	#send tr:nth-child(2) .keepItOn{
+		color: rgb(249,186,197);
+		border: 1px solid rgb(249,186,197);
+	}	
+	#send tr:nth-child(2) span:active{
+		background: rgb(194,63,92);
+	}
+	#send tr:nth-child(1) p:nth-last-child(1){
+		margin-top: 0.5em;
+	}
+
+	#captchas{
+		width: 7em !important;
+	}

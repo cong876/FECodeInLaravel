@@ -1,0 +1,21 @@
+
+<div class="container">
+	<form name="form">
+		<textarea placeholder="点此输入您想代购的商品信息，越详细越好哦~" name="title" class="itemInfo" required ng-model="item.title"></textarea>
+		<div class="split_area"></div>
+		<div class="pictureAreaD">
+			<span ng-repeat="picture in item.localId track by $index">
+				<section class="pictureContainer">
+					<div class="squareImage" yeye-bg="picture" ng-click="previewPicture($event, $index, item.localId)"></div>
+					<span ng-click="deletePicture($event, $index, item)" class="deletePictureD center">&times;</span>
+				</section>
+			</span>
+			<section ng-if="item.localId.length<6" class="btnArea"><div class="addPictureD center" ng-click="addPicture($event, item)"><span>+</span></div></section>
+			<section class="left_fix"></section>
+			<section class="justify_fix"></section>
+		</div>
+		<div class="btnArea detail_bottom"><button type="submit" class="yeye_btn large_btn" ng-disabled="form.$invalid" ng-click="saveItem(item,$stateParams)" yeye-prevent>确认</button></div>
+		<span class="help"
+				ng-show="form.title.$dirty && form.title.$invalid">请输入商品信息</span>
+	</form>
+</div>

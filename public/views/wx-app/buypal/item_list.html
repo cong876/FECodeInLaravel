@@ -1,0 +1,32 @@
+  <div class="itemListContainer">
+    <ul>
+      <li class="itemL" ng-repeat="item in requirement track by $index" ng-click="editItem($index)" yeye-prevent>
+        <div class="itemPictureAreaL left">
+          <div>
+            <div class="squareImage" yeye-bg="item.localId.length>0 ? item.localId[0] : hlj_url.defaultItemPic"></div>
+          </div>
+        </div>
+        <div class="itemTitleAreaL left">
+          <span ng-bind="substr(item.title,58)"></span>
+        </div>
+        <div class="itemInfoAreaL left" ng-click="stop($event)">
+          <span class="icon-delete" ng-click="deleteItem($index)" yeye-prevent></span>
+          <span class="itemNumberAreaL center">
+            <span ng-click="" yeye-number="item.number" yeye-number-method="sub" yeye-total="totalNumber">-</span><span ng-bind="item.number"></span><span ng-click="" yeye-number="item.number" yeye-number-method="add" yeye-total="totalNumber">+</span>
+          </span>
+        </div>
+      </li>
+    </ul>
+    <div class="noItemBgArea center" ng-if="requirement.length===0">
+      <img ng-src="{{hlj_url.noItemBg}}">
+      <p>请告诉红领巾您想代购的国外商品哦~</p>
+    </div>
+    <div class="btnArea center">
+      <div class="addItem" ng-click="editItem(-1)">+</div>
+    </div>
+    <div class="btnWithInfo fixbottom" ng-if="requirement.length>0">
+      <span>共{{totalNumber}}件商品</span>
+      <div class="yeye_btn rect_btn" ng-click="submitRequirement(requirement)" yeye-prevent>提 交</div>
+      <div class="justify_fix"></div>
+    </div>
+  </div>

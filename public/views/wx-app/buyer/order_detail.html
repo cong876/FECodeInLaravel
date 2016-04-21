@@ -1,0 +1,61 @@
+<div class="orderDetail" ui-view>
+  <div class="stateArea">
+    <div class="box">
+      <div><span class="icon-order"></span></div>
+      <div>
+        <section>订单状态：<span class="obvious" ng-bind="orders.state_name"></span></section>
+        <section ng-show="orders.state == 301 || orders.state == 601">买手：{{order.country + " " + order.seller}}</section>
+      </div>
+    </div>
+  </div>
+  <div ng-show="orders.state == 301 || orders.state == 601" class="logisticsArea">
+    <logistics-preview ng-if="order.id && (orders.state == 301 || orders.state == 601)" order-id="order.id"></logistics-preview>
+  </div>
+  <div class="addressArea" ng-show="order.address">
+    <div class="box">
+      <div><span class="icon-location2"></span></div>
+      <div>
+        <p>{{order.address.receiver_name + " " + order.address.receiver_mobile}}</p>
+        <p>{{order.address.province.name + " " + order.address.city.name + " " + order.address.county.name}}</p>
+        <p>{{order.address.street_address}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="contentArea">
+    <div ng-repeat="item in order.details track by $index">
+      <div>
+        <over-view ui-sref="buyerAdmin.orders.list.detail.item({index: $index})" title="{{substr(item.title,64)}}" number="{{item.number}}" image="{{item.pic_urls[0] ? item.pic_urls[0] : hlj_url.defaultItemPic}}"></over-view>
+      </div>
+      <hr/>
+    </div>
+    <div class="orderPriceArea">
+      <span>共{{order.number}}件</span>
+      <span class="right" ng-if="order.price">合计：<b yeye-price="order.price"></b></span>
+    </div>
+    <div class="orderRefundArea" ng-if="order.refunds.length" ng-click="checkRefund(order.refunds)">
+      <hr/>
+      <span class="icon-refund"> 查看退款</span>
+      <span class="right">></span>
+    </div>
+  </div>
+  <div class="timeArea">
+    <p ng-if="order.requirementNumber">需求编号: {{order.requirementNumber}}</p>
+    <p ng-if="order.order_number">订单编号：{{order.order_number}}</p>
+    <p ng-if="order.submit_time">提交时间：{{order.submit_time}}</p>
+    <p ng-if="order.offer_time">报价时间：{{order.offer_time}}</p>
+    <p ng-if="order.payment_time">付款时间：{{order.payment_time}}</p>
+    <p ng-if="orders.state == 301 || orders.state == 601">发货时间：{{order.delivery_time}}</p>
+    <p ng-if="orders.state == 301">完成时间：{{order.complete_time}}</p>
+  </div>
+  <div class="placeholder"></div>
+  <div class="fixbottom">
+    <div class="btnArea">
+      <div ng-if="(orders.state == 201) || (orders.state == 0)" ng-click="deleteOrder(order.id)" class="yeye_btn rect_btn">取消订单</div>
+      <div ng-if="orders.state == 301" ng-click="hideOrder(order.id)" class="yeye_btn rect_btn">删除订单</div>
+      <div class="yeye_btn rect_btn callOp" ng-click="callOperator(order.operatorMobile)">联系客服</div>
+      <div ng-if="(orders.state == 301) || (orders.state == 601)" ui-sref="buyerAdmin.orders.list.detail.logistics({orderId: order.id})" class="yeye_btn rect_btn">查看物流</div>
+      <div ng-if="orders.state == 201" ng-click="payNow(order.id, true)" class="yeye_btn rect_btn">立即付款</div>
+      <div ng-if="orders.state == 601" ng-click="sureToComplete(order.id)" class="yeye_btn rect_btn">确认收货</div>
+    </div>
+  </div>
+</div>

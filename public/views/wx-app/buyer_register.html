@@ -1,0 +1,54 @@
+<div class="container registerContainer">
+	<div class="userInfoArea">
+		<div class="wx_info">
+			<div class="headImageContainer">
+				<div class="squareImage" yeye-bg="user.headImageUrl"></div>
+			</div>
+			<p ng-bind="user.nickname"></p>
+		</div>
+	</div>
+	<form name="form" ng-submit="register(user, hlj_url.buyerRegister)">
+		<div class="inputArea">
+			<span class="yeye-icon user-icon"></span><input
+				name="mobile" type="tel" placeholder="请输入您的手机号"
+				ng-model="user.mobile" ng-pattern="hlj_patt.mobile" required
+				ng-class="{
+				error: form.mobile.$dirty&&form.mobile.$invalid&&form.mobile.$touched
+				}">
+				<p class="verifyAlert error"
+				ng-show="form.mobile.$dirty&&form.mobile.$invalid&&form.mobile.$touched">手机格式错误</p>
+		</div>
+		<div class="inputArea verifyCodeContainer">
+				<span class="yeye-icon code-icon"></span><input name="verifyCode" class="verifyCode" type="tel"
+				placeholder="请输入验证码" ng-model="verifyCode"
+				ng-class="{
+					'error' : form.verifyCode.$dirty&&form.verifyCode.$invalid,
+					'pending': form.verifyCode.$pending
+				}"
+				yeye-verify="user.mobile" yeye-zone="86"
+				required>
+				<p class="verifyAlert pending"
+				ng-show="!form.verifyCode.$pending&&!form.verifyCode.$dirty&&isCountdown.register">请注意接听来电</p>
+				<p class="verifyAlert error"
+				ng-show="form.verifyCode.$dirty&&form.verifyCode.$invalid">验证码错误</p>
+				<p class="verifyAlert success"
+				ng-show="!form.verifyCode.$pending&&!form.verifyCode.$invalid&&form.verifyCode.$touched&&isCountdown.register">验证通过</p>
+				<div class="yeye_btn white_btn small_btn" ng-model="user.mobile"
+				ng-disabled="form.mobile.$error.pattern||form.mobile.$invalid"
+				yeye-zone="86" yeye-countdown="重发(60s)">语音验证码</div>
+		</div>
+		<div class="inputArea">
+			<span class="yeye-icon email-icon"></span><input
+			name="email" class="email" type="email" placeholder="请输入您的常用邮箱"
+			ng-model="user.email" ng-pattern="hlj_patt.email" required
+			ng-class="{
+				'error' :form.email.$dirty&&form.email.$invalid&&form.email.$touched
+			}">
+			<p class="verifyAlert error"
+			ng-show="form.email.$dirty&&form.email.$invalid&&form.email.$touched">邮箱格式错误</p>
+		</div>
+		<div class="btnArea">
+			<button class="yeye_btn black_btn large_btn" type="submit" ng-disabled="form.$invalid || !!form.$pending || !form.verifyCode.$touched">注册</button>
+		</div>
+	</form>
+</div>

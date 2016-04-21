@@ -1,0 +1,17 @@
+<ul>
+  <li class="address" ng-repeat="address in addresses.list track by $index" ng-click="checkAddress($index)">
+    <section class="title"><span ng-if="address.is_default" class="obvious">[默认] </span>{{address.receiver_name}} {{address.receiver_mobile}}</section>
+    <section class="middle"><span>{{address.province.name + " " + address.city.name + " " + address.county.name}}</span>
+      <span ng-if="state==='management'" ng-click="stop($event);deleteAddress(address, $index)" class="icon-delete"></span>
+      <span ng-if="state==='choose'&&chose.address==address" class="icon-check"></span>
+    </section>
+    <section ng-bind="address.street_address"></section>
+  </li>
+</ul>
+<div ng-if="addresses.list.length === 0" class="noAddress center">
+  <div><span class="icon-location"></span></div>
+  <div>暂无收货地址</div>
+</div>
+<div class="btnArea fixbottom" ng-class="{'noAddressBtn': addresses.list.length ===0}">
+  <div ng-click="dealAddress()" ng-bind="dealer" class="yeye_btn large_btn"></div>
+</div>

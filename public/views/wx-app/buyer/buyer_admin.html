@@ -1,0 +1,72 @@
+<div id="buyerAdmin" ui-view>
+  <div class="center">
+    <div class="wx_info">
+      <div class="headImageContainer" ui-sref="buyerAdmin.profile">
+        <div class="squareImage" yeye-bg="user.headImageUrl"></div>
+      </div>
+      <p ng-bind="user.nickname"></p>
+    </div>
+    <hr/>
+    <div class="orderTabsArea">
+      <nav>
+        <ul>
+          <li ui-sref="buyerAdmin.orders.list({state: 'waitOffer'})">
+            <span class="icon-waitOffer"></span>
+            <p>待报价</p>
+          </li>
+          <li ui-sref="buyerAdmin.orders.list({state: 'waitPay'})">
+            <span class="icon-waitPay"></span>
+            <span ng-if="orderNumber.waitPayNumber" class="catchAttention" ng-bind="orderNumber.waitPayNumber"></span>
+            <p>待付款</p>
+          </li>
+          <li ui-sref="buyerAdmin.orders.list({state: 'waitDelivery'})">
+            <span class="icon-waitDelivery"></span>
+            <p>待发货</p>
+          </li>
+          <li ui-sref="buyerAdmin.orders.list({state: 'delivered'})">
+            <span class="icon-delivered"></span>
+            <p>已发货</p>
+          </li>
+          <li ui-sref="buyerAdmin.orders.list({state: 'completed'})">
+            <span class="icon-completed"></span>
+            <p>已完成</p>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="shortcuts center">
+    <nav>
+      <ul>
+        <li></li>
+        <li class="toDailyActivity" ui-sref="periodActivity" ui-sref-opts="{location: 'replace'}">
+          <span class="icon-tagT"></span>
+          <p>今日团购</p>
+        </li>
+        <!--<li class="toMyStarts">-->
+          <!--<span class="icon-star-full"></span>-->
+          <!--<p>我的星星</p>-->
+        <!--</li>-->
+        <li></li>
+        <li class="toStarts">
+          <a href="http://www.yeyetech.net/accessGoldActivity">
+            <span class="icon-gift"></span>
+            <p>兑换奖品</p>
+          </a>
+        </li>
+        <li></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="tags">
+    <ul>
+      <li ui-sref="buyerAdmin.addressManagement"><span class="icon-location2"></span>收货地址<span>></span></li>
+      <hr/>
+      <a href="http://mp.weixin.qq.com/s?__biz=MzIyMDA1MDU4Mw==&mid=401575178&idx=1&sn=52300325f10cd6d6c7b748287f7d8497&scene=0&previewkey=Q4ZK0LfCMijhKsiMnxyZCcwqSljwj2bfCUaCyDofEow%3D#wechat_redirect"><li><span class="icon-buypalQ"></span>如何代购<span>></span></li></a>
+      <hr/>
+      <a href="http://mp.weixin.qq.com/s?__biz=MzIyMDA1MDU4Mw==&mid=401575134&idx=1&sn=31fcfc3d745bf68ce7d3aedbba94b3a6&scene=0&previewkey=Q4ZK0LfCMijhKsiMnxyZCcwqSljwj2bfCUaCyDofEow%3D#wechat_redirect"><li><span class="icon-quertions"></span>常见问题<span>></span></li></a>
+      <hr/>
+      <li ui-sref="buyerAdmin.callUs"><span class="icon-callus"></span>联系我们<span>></span></li>
+    </ul>
+  </div>
+</div>

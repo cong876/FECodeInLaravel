@@ -1,0 +1,21 @@
+<div class="rewardContainer center" ng-if="!isGetReward">
+	<img ng-src="{{hlj_url.reward}}" ng-click="getReward()">
+</div>
+<div class="rewardItemContainer center" ng-show="isGetReward">
+	<div class="rewardItemContent">
+		<p class="rewardItemDescriptionContainer">
+			<span class="icon-star-full"></span>
+			<span ng-bind="item.description"></span>
+			<span class="icon-star-full"></span>
+		</p>
+		<p class="rewardItemTitle"><span ng-bind="item.title"></span></p>
+		<p class="rewardItemPriceContainer"><span>包邮</span><span yeye-price="item.price"></span><span yeye-price="item.marketPrice"></span></p>
+		<div class="rewardItemImageContainer">
+			<div class="squareImage" yeye-bg="item.pic_url"></div>
+		</div>
+		<div class="btnArea">
+			<button class="yeye_btn large_btn" ng-click="buyReward(item)">确认</button>
+		</div>
+		<p class="rewardItemGuide"><small>您已成功开启新人专属福袋<br>点击“确认”立即换购</small></p>
+	</div>
+</div>

@@ -1,0 +1,102 @@
+<div class="activityContainer" id="activity">
+	<div class="activityHeader">
+		<div ng-if="carouselPics.length>0" class="carouselContainer" yeye-carousel="carouselPics" yeye-targets="carouselTargets" yeye-interval="3000"></div>
+		<div ng-if="activity.activityType==1">
+			<nav class="activityTabs unobvious">
+				<ul>
+					<li ng-click="switch('today')" ng-class="{active: aState=='today'}"><span>今日团购</span></li>
+					<li ng-click="switch('next')" ng-class="{active: aState=='next'}"><span>明日预告</span></li>
+				</ul>
+			</nav>
+		</div>
+		<div ng-if="activity.activityType==2"><div class="rectImage" yeye-bg="activity.activityImage"></div></div>
+		<div class="activityImageContainer" ng-show="aState == 'next'">
+			<div class="rectImage" yeye-bg="http://7xln8l.com2.z0.glb.qiniucdn.com/mingriyugao160307.jpg"></div>
+		</div>
+	</div>
+
+	<section ng-if="activity.activityType==1" class="activityCountdownContainer">
+		距团购{{aState == 'today' ? '结束' : '开始'}}
+		<yeye-timer server-time="activity.serverTime" update-at="updateAt" deadline="activity.deadline" timer-end="refresh"></yeye-timer>
+	</section>
+
+
+	<div ng-if="activity.activityType==1">
+		<sec-kills
+			ng-show="aState == 'today'"
+			server-time="activity.serverTime"
+			url="{{'/api/activity/' + activity.activity_id + '/user/' + user.hlj_id + '/secKills'}}"
+			user="user"
+			state="current"></sec-kills>
+		<sec-kills
+			ng-show="aState == 'next'"
+			server-time="activity.serverTime"
+			url="{{'/api/activity/' + activity.next_activity_id + '/user/' + user.hlj_id + '/secKills'}}"
+			user="user"
+			state="next"></sec-kills>
+	</div>
+
+	<div class="itemContainer" ng-repeat="item in activityShow track by $index" id="{{'item'+item.id}}" du-smooth-scroll>
+		<div class="titleArea">
+			<span class="itemIndex" ng-bind="doubleNumber($index+1) + ' '"></span><span class="largeSize" ng-bind="item.title"></span><br/>
+			<span ng-repeat="tag in item.tags" ng-bind="tag.tag_name" ng-style="tag.style" class="itemTags"></span>
+		</div>
+		<div class="itemDescription unobvious" ng-bind="item.description"></div>
+		<div class="itemPictureArea">
+			<div class="squareImage" yeye-bg="item.pic_url"></div>
+		</div>
+		<div class="itemPriceArea">
+			<div>
+				<span class="largeSize" yeye-price="item.price"></span><span class="yellowBg">包邮</span><br>
+				<span class="unobvious">国内<span yeye-price="item.market_price"></span></span>
+			</div>
+			<div class="yeye_btn" ng-class="{'black_btn': aState == 'next'}" ng-disabled="aState == 'next'" ng-click="buyNow(item, $index)"><span class="placeholder">z</span><span ng-bind="aState == 'today' ? '立即购买' : '敬请期待'"></span><span class="placeholder">z</span></div>
+		</div>
+	</div>
+
+	<footer class="center" ng-if="activity.activityType==1">
+		<p><b>温馨提示</b></p>
+		<small>
+			<p class="placeholder">0</p>
+			<p>没有您想要的商品?</p>
+			<p>点击下方<span class="obvious">帮我代购</span>吧</p>
+			<p>▼</p>
+		</small>
+		<section class="copyright">
+			<small>©2016 北京耶烨共享科技有限公司</small>
+		</section>
+	</footer>
+</div>
+
+<div class="modal" ng-if="buyModal">
+	<div class="bigModalContent">
+		<div class="closeContainer"><span class="right" ng-click="close()">&times;</span></div>
+		<section class="box overView">
+			<div>
+				<div>
+					<div class="squareImage" yeye-bg="itemB.pic_url"></div>
+				</div>
+			</div>
+			<div>
+				<p ng-bind="itemB.title"></p>
+				<p>
+					<span yeye-price="itemB.price"></span>
+					<span class="itemNumberAreaL center"><span ng-click="" yeye-number="itemB.number" yeye-number-method="sub" yeye-total="totalNumber">-</span><span ng-bind="itemB.number">1</span><span ng-click="" yeye-number="itemB.number" yeye-number-method="add" ng-disabled="itemB.number == itemB.buy_per_user">+</span></span>
+					<span ng-show="itemB.number == itemB.buy_per_user" class="error maxNumberAlert"><small>最大购买数量为{{itemB.buy_per_user}}</small></span>
+				</p>
+			</div>
+		</section>
+		<div class="bigModalInputArea">
+			<textarea ng-model="itemB.order_memo" placeholder="备注：选填"></textarea>
+		</div>
+		<div class="box bigModalBtnArea">
+			<div>
+				<p><span>合计:<span yeye-price="itemB.price*itemB.number"></span>（包邮）</span></p>
+				<p class="obvious">*请在{{itemB.item_id ? '10分钟' : '6个小时'}}内支付</p>
+			</div>
+			<div>
+				<div class="yeye_btn rect_btn" ng-click="buy(itemB)">确认购买</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,73 @@
+<div class="buyerProfile">
+  <div class="tags">
+    <ul>
+      <li><span>头像</span><div class="headImageContainer"><div class="squareImage" yeye-bg="user.headImageUrl"></div></div><span></span></li>
+      <hr/>
+      <li><span>昵称</span><span class="normalSize" ng-bind="user.nickname"></span><span class="placeholder">z</span></li>
+      <hr/>
+      <li ng-click="showEdit('mobileEdit', user.mobile)"><span>手机</span><span class="normalSize" ng-bind="user.mobile"></span><span>></span></li>
+      <hr/>
+      <li ng-click="showEdit('emailEdit', user.email)"><span>邮箱</span><span class="normalSize" ng-bind="user.email"></span><span>></span></li>
+      <hr/>
+      <li ui-sref="buyerAdmin.addressManagement"><span>收货地址管理</span><span>></span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="modal" ng-if="mobileEditM">
+  <div class="modalContent">
+    <form name="formM">
+      <div class="modalHead">编辑手机</div>
+      <div class="inputArea">
+        <input name="mobile" type="tel" placeholder="请输入您的手机号"
+               ng-model="mobileEdit" ng-pattern="hlj_patt.mobile" required
+               ng-class="{
+                 error: formM.mobile.$dirty&&formM.mobile.$invalid&&formM.mobile.$touched
+               }">
+        <p class="verifyAlert error"
+           ng-show="formM.mobile.$dirty&&formM.mobile.$invalid&&formM.mobile.$touched">手机格式错误</p>
+      </div>
+      <div class="inputArea verifyCodeContainer">
+        <input name="verifyCode" class="verifyCode" type="tel"
+               placeholder="请输入验证码" ng-model="verifyCode"
+               yeye-verify="mobileEdit" yeye-zone="86" required
+               ng-class="{
+                'error' : formM.verifyCode.$dirty&&formM.verifyCode.$invalid,
+                'pending': formM.verifyCode.$pending
+               }">
+        <p class="verifyAlert pending"
+           ng-show="!formM.verifyCode.$pending&&!formM.verifyCode.$dirty&&isCountdown.register">请注意接听来电</p>
+        <p class="verifyAlert error"
+           ng-show="formM.verifyCode.$dirty&&formM.verifyCode.$invalid">验证码错误</p>
+        <p class="verifyAlert success"
+           ng-show="!formM.verifyCode.$pending&&!formM.verifyCode.$invalid&&formM.verifyCode.$touched&&isCountdown.register">验证通过</p>
+        <div class="yeye_btn white_btn small_btn" ng-model="mobileEdit"
+             ng-disabled="formM.mobile.$error.pattern||formM.mobile.$invalid"
+             yeye-zone="86" yeye-countdown="重发(60s)">语音验证码</div>
+      </div>
+      <div class="btnArea">
+        <button ng-click="close('mobileEditM')">取消</button><button ng-disabled="formM.$invalid || !!formM.$pending || !formM.verifyCode.$touched" ng-click="updateMobile(mobileEdit, close)">确认</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" ng-if="emailEditM">
+  <div class="modalContent">
+    <form name="formE">
+      <div class="modalHead">编辑邮箱</div>
+      <div class="inputArea">
+        <input name="email" class="email" type="email" placeholder="请输入您的常用邮箱"
+               ng-model="emailEdit" ng-pattern="hlj_patt.email" required
+               ng-class="{
+				        'error' :formE.email.$dirty&&formE.email.$invalid&&formE.email.$touched
+			         }">
+        <p class="verifyAlert error"
+           ng-show="formE.email.$dirty&&formE.email.$invalid&&formE.email.$touched">邮箱格式错误</p>
+      </div>
+      <div class="btnArea">
+        <button ng-click="close('emailEditM')">取消</button><button ng-disabled="formE.$invalid" ng-click="updateEmail(emailEdit, close)">确认</button>
+      </div>
+    </form>
+  </div>
+</div>

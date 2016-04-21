@@ -1,0 +1,41 @@
+<div id="orderArea">
+  <div class="orderTabsArea center" ng-if="$state.is('buyerAdmin.orders.list')">
+    <nav class="unobvious">
+      <ul>
+        <li
+          ui-sref-active="active"
+          ui-sref="buyerAdmin.orders.list({state: 'waitOffer'})"
+          ui-sref-opts="{location: 'replace'}">
+          <span>待报价</span>
+        </li>
+        <li
+          ui-sref-active="active"
+          ui-sref="buyerAdmin.orders.list({state: 'waitPay'})"
+          ui-sref-opts="{location: 'replace'}">
+          <span ng-if="orderNumber.waitPayNumber" ng-bind="orderNumber.waitPayNumber" class="catchAttention"></span>
+          <span>待付款</span>
+        </li>
+        <li
+          ui-sref-active="active"
+          ui-sref="buyerAdmin.orders.list({state: 'waitDelivery'})"
+          ui-sref-opts="{location: 'replace'}">
+          <span>待发货</span>
+        </li>
+        <li
+          ui-sref-active="active"
+          ui-sref="buyerAdmin.orders.list({state: 'delivered'})"
+          ui-sref-opts="{location: 'replace'}">
+          <span>已发货</span>
+        </li>
+        <li
+          ui-sref-active="active"
+          ui-sref="buyerAdmin.orders.list({state: 'completed'})"
+          ui-sref-opts="{location: 'replace'}">
+          <span>已完成</span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div ng-class="{orderContainer: $state.is('buyerAdmin.orders.list')}" ui-view>
+  </div>
+</div>
